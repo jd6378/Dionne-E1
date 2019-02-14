@@ -10,12 +10,24 @@ function startHandler()
 
 function calcDistance(query)
 {
-    
+    if(isNaN(query['budget']) || query['budget'] < 0)
+        return {'error' : 'Invalid value for budget'};
+    if(isNaN(query['mpg']) || query['mpg'] < 0)
+        return {'error' : 'Invalid value for mpg'};
+    if(isNaN(query['fuelCost']) || query['fuelCost'] < 0)
+        return {'error' : 'Invalid value for budget'};
+    return {'distance' : query['budget'] / query['fuelCost'] * query['mpg']}
 }
 
 function calcCost(query)
 {
-    
+    if(isNaN(query['distance']) || query['distance'] < 0)
+        return {'error' : 'Invalid value for distance'};
+    if(isNaN(query['mpg']) || query['mpg'] < 0)
+        return {'error' : 'Invalid value for mpg'};
+    if(isNaN(query['fuelCost']) || query['fuelCost'] < 0)
+        return {'error' : 'Invalid value for budget'};
+    return {'cost' : query['distance'] / query['mpg'] * query['fuelCost']}
 }
 
 function requestHandler(req, res)
